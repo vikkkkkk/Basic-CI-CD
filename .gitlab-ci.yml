@@ -2,9 +2,7 @@ stages:
   - build
 
 Build:
-  stage: build 
-  tags:
-    - hsiuayes
+  stage: build
   script:
     - cd src/cat
     - make s21_cat
