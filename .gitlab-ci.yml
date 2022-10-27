@@ -1,6 +1,7 @@
 stages:
   - build
   - test
+  - tests
 
 Build:
   stage: build
@@ -22,3 +23,11 @@ Style_Test:
     - clang-format -n --Werror *.c
     - cd ../grep
     - clang-format -n --Werror *.c
+
+Test:
+  stage: tests
+  script:
+    - cd src/cat
+    - make test
+    - cd ../grep
+    - make test
