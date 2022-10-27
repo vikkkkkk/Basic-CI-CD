@@ -1,5 +1,6 @@
 stages:
   - build
+  - test
 
 Build:
   stage: build
@@ -14,3 +15,10 @@ Build:
       - src/grep/s21_grep
     expire_in: 30 days
 
+Style_Test:
+  stage: test
+  script:
+    - cd src/cat
+    - clang-format -n --Werror *.c
+    - cd ../grep
+    - clang-format -n --Werror *.c
