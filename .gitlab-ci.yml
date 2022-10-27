@@ -2,6 +2,7 @@ stages:
   - build
   - test
   - tests
+  - deploy
 
 Build:
   stage: build
@@ -31,3 +32,9 @@ Test:
     - make test
     - cd ../grep
     - make test
+
+Deploy:
+  stage: deploy
+  script:
+    - cd src
+    - bash copy.sh
