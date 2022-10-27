@@ -35,6 +35,7 @@ Test:
 
 Deploy:
   stage: deploy
+  when: manual
   script:
     - cd src
     - bash copy.sh
