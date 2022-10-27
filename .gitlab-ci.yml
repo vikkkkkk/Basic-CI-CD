@@ -16,6 +16,9 @@ Build:
       - src/cat/s21_cat
       - src/grep/s21_grep
     expire_in: 30 days
+  after_script:
+    - cd src
+    - bash notification.sh
 
 Style_Test:
   stage: test
@@ -24,6 +27,9 @@ Style_Test:
     - clang-format -n --Werror *.c
     - cd ../grep
     - clang-format -n --Werror *.c
+  after_script:
+    - cd src
+    - bash notification.sh
 
 Test:
   stage: tests
@@ -32,6 +38,9 @@ Test:
     - make test
     - cd ../grep
     - make test
+  after_script:
+    - cd src
+    - bash notification.sh
 
 Deploy:
   stage: deploy
@@ -39,3 +48,6 @@ Deploy:
   script:
     - cd src
     - bash copy.sh
+  after_script:
+    - cd src
+    - bash notification.sh
